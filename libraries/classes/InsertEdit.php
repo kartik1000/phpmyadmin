@@ -2563,6 +2563,10 @@ class InsertEdit
                 return $multi_edit_funcs[$key] . '(' . $current_value . ",'"
                     . $this->dbi->escapeString($multi_edit_salt[$key]) . "')";
             }
+            elseif ($multi_edit_funcs[$key] == "PASSWORD_HASH") {
+                $current_value = password_hash($current_value,PASSWORD_DEFAULT);
+                return '\'' . $current_value . '\'';
+            }
 
             return $multi_edit_funcs[$key] . '(' . $current_value . ')';
         }

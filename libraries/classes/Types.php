@@ -492,6 +492,7 @@ class Types
                 'MONTHNAME',
                 'OLD_PASSWORD',
                 'PASSWORD',
+                'PASSWORD_HASH',
                 'QUOTE',
                 'REVERSE',
                 'RTRIM',
