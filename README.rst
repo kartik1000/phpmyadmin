@@ -1,6 +1,10 @@
 phpMyAdmin
 ==========
 
+.. image:: https://badges.gitter.im/phpmyadminsummerproject/community.svg
+   :alt: Join the chat at https://gitter.im/phpmyadminsummerproject/community
+   :target: https://gitter.im/phpmyadminsummerproject/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
 A web interface for MySQL and MariaDB.
 
 https://www.phpmyadmin.net/
