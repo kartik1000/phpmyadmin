@@ -265,7 +265,7 @@ AJAX.registerOnload('export.js', function () {
         }
         });
     });
-    
+
     /**
      * Export template handling code
      */
