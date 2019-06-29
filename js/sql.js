@@ -567,7 +567,8 @@ AJAX.registerOnload('sql.js', function () {
         $.post($form.attr('action'), $form.serialize() + argsep + 'ajax_page_request=true', function (data) {
             if (typeof data !== 'undefined' && data.success === true) {
                 // success happens if the query returns rows or not
-
+                // Store the Sql Query as as session storage variable to viewed during export or any other task
+                sessionStorage.setItem("sqlquery",$('#sqlquery').val());
                 // show a message that stays on screen
                 if (typeof data.action_bookmark !== 'undefined') {
                     // view only

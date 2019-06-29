@@ -233,6 +233,39 @@ AJAX.registerTeardown('export.js', function () {
 });
 
 AJAX.registerOnload('export.js', function () {
+    // Fetch SQL Query used for exporting rows
+    var sqlquery = sessionStorage.getItem("sqlquery");
+    //If one has reached the export page with sql query or basically the sql query is null, then we need not display 'Show SQL QUERY Button'
+    if(sqlquery == null){
+        $('#sqlqueryform').hide();
+    }
+    else{
+        $('#sqlqueryform').show();
+    }
+    // must delete session storage variable everytime, to avoid any problem when users arrives at the export again
+    delete sessionStorage.sqlquery;
+    $('#showsqlquery').click(function(){
+        // Creating a dialog box similar to preview sql container to show sql query
+        var $sql_content = $('<div/>').append(sqlquery);
+        var closing_options = {};
+        closing_options[PMA_messages.strClose] = function () {
+        $(this).dialog('close');
+        };
+        var $response_dialog = $sql_content.dialog({
+        minWidth: 550,
+        maxHeight: 400,
+        modal: true,
+        buttons: closing_options,
+        title: 'Sql query',
+        close: function () {
+        $(this).remove();
+        },open: function () {
+        // Pretty SQL printing.
+        PMA_highlightSQL($(this));
+        }
+        });
+    });
+    
     /**
      * Export template handling code
      */
