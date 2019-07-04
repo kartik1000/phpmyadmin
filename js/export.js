@@ -246,20 +246,20 @@ AJAX.registerOnload('export.js', function () {
         delete sessionStorage.sqlquery;
         $('#showsqlquery').click(function(){
             // Creating a dialog box similar to preview sql container to show sql query
-            var $sql_content = $('<div/>').append(sqlquery);
-            var closing_options = {};
-            closing_options[PMA_messages.strClose] = function () {
+            var $sqlcontent = $('<div/>').append(sqlquery);
+            var closingoptions = {};
+            closingoptions[PMA_messages.strClose] = function () {
                 $(this).dialog('close');
             };
-            var $response_dialog = $sql_content.dialog({
+            var $response_dialog = $sqlcontent.dialog({
             minWidth: 550,
             maxHeight: 400,
             modal: true,
-            buttons: closing_options,
+            buttons: closingoptions,
             title: 'Sql query',
             close: function () {
             $(this).remove();
-            },open: function () {
+            }, open: function () {
                 // Pretty SQL printing.
                 PMA_highlightSQL($(this));
             }
