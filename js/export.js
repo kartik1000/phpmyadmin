@@ -256,7 +256,7 @@ AJAX.registerOnload('export.js', function () {
             maxHeight: 400,
             modal: true,
             buttons: closingoptions,
-            title: 'Sql query',
+            title: PMA_messages.strQuery,
             close: function () {
             $(this).remove();
             }, open: function () {

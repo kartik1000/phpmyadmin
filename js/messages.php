@@ -219,6 +219,7 @@ $js_messages['strTraffic'] = __('Traffic');
 $js_messages['strSettings'] = __('Settings');
 $js_messages['strAddChart'] = __('Add chart to grid');
 $js_messages['strClose'] = __('Close');
+$js_messages['strQuery'] = __('SQL Query');
 $js_messages['strAddOneSeriesWarning']
     = __('Please add at least one variable to the series!');
 $js_messages['strNone'] = __('None');
