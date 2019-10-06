@@ -248,7 +248,7 @@ AJAX.registerOnload('export.js', function () {
             // Creating a dialog box similar to preview sql container to show sql query
             var $sqlcontent = $('<div/>').append(sqlquery);
             var closingoptions = {};
-            closingoptions[PMA_messages.strClose] = function () {
+            closingoptions[Messages.strClose] = function () {
                 $(this).dialog('close');
             };
             var $response_dialog = $sqlcontent.dialog({
@@ -256,12 +256,12 @@ AJAX.registerOnload('export.js', function () {
             maxHeight: 400,
             modal: true,
             buttons: closingoptions,
-            title: PMA_messages.strQuery,
+            title: Messages.strQuery,
             close: function () {
             $(this).remove();
             }, open: function () {
                 // Pretty SQL printing.
-                PMA_highlightSQL($(this));
+                Functions.highlightSql($(this));
             }
             });
         });
