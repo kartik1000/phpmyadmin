@@ -333,34 +333,35 @@ Indexes.showAddIndexDialog = function (sourceArray, arrayIndex, targetColumns, c
     }
     postData.columns = JSON.stringify(columns);
 
-    var buttonOptions = {};
-    buttonOptions[Messages.strGo] = function () {
-        var isMissingValue = false;
+    function Indexes_GoDialog() {
+        var is_missing_value = false;
         $('select[name="index[columns][names][]"]').each(function () {
             if ($(this).val() === '') {
-                isMissingValue = true;
+                is_missing_value = true;
             }
         });
 
-        if (! isMissingValue) {
-            Indexes.addColumnToIndex(
-                sourceArray,
-                arrayIndex,
+        if (! is_missing_value) {
+            PMA_addColumnToIndex(
+                source_array,
+                array_index,
                 index.Index_choice,
-                colIndex
+                col_index
             );
         } else {
-            Functions.ajaxShowMessage(
+            PMA_ajaxShowMessage(
                 '<div class="error"><img src="themes/dot.gif" title="" alt=""' +
-                ' class="icon ic_s_error"> ' + Messages.strMissingColumn +
+                ' class="icon ic_s_error" /> ' + PMA_messages.strMissingColumn +
                 ' </div>', false
             );
 
             return false;
         }
 
-        $(this).dialog('close');
+        $(this).remove();
     };
+    var buttonOptions = {};
+    buttonOptions[Messages.strGo] = Indexes_GoDialog;
     buttonOptions[Messages.strCancel] = function () {
         if (colIndex >= 0) {
             // Handle state on 'Cancel'.
@@ -395,6 +396,13 @@ Indexes.showAddIndexDialog = function (sourceArray, arrayIndex, targetColumns, c
                         width: 450,
                         minHeight: 250,
                         open: function () {
+                            $(this).keypress(function(e){
+                            if (e.which == 13 || e.keyCode == 13 || window.event.keyCode == 13) {
+                            e.preventDefault();
+                            Indexes_GoDialog();
+                            $(this).remove();
+                            };
+                            });
                             Functions.checkIndexName('index_frm');
                             Functions.showHints($div);
                             Functions.initSlider();
